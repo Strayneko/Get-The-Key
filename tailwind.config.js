@@ -3,10 +3,22 @@ module.exports = {
   content: [
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
-    "./resources/**/*.vue",
+    "./resources/**/*.vue"
   ],
   theme: {
-    extend: {},
+    container: {
+      center: true
+    },
+    extend: {
+      container: {
+        screens: {
+          xl: "1500px"
+        }
+      },
+      colors: {
+        primary: "#0097e6"
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 };

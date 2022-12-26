@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// home route grouping
+Route::name('home.')
+    ->controller(HomeController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+    });
+
+// Dashboard route group
+Route::prefix('dashboard')
+    ->name('dashboard.')
+    ->group(function () {
+    });
+
+// Auth route group
+Route::prefix('auth')
+    ->name('auth.')
+    ->controller(AuthController::class)
+    ->group(function () {
+        Route::get('/', 'login')->name('login');
+    });
