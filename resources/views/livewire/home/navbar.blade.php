@@ -1,5 +1,5 @@
 <!-- navbar -->
-    <nav class="bg-gray-800">
+    <nav class="bg-secondary">
         <div class="container flex">
             <div class="px-8 py-4 bg-primary flex items-center cursor-pointer relative group">
                 <span class="text-white">
