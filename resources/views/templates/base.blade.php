@@ -21,21 +21,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     {{-- alphine js --}}
     <script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
+    {{-- sweetalert 2 --}}
+    <script  src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @livewireStyles
 </head>
 
 <body>
-
-         {{-- header component --}}
-         <livewire:home.header />
-        {{-- navbar component --}}
-        <livewire:home.navbar />
-
-        @yield('content')
-        
-        <livewire:home.footer />
-        <livewire:home.copyright />
-            
-
+    
+    {{-- header component --}}
+    <livewire:home.header />
+    {{-- navbar component --}}
+    <livewire:home.navbar />
+    
+    @yield('content')
+    <livewire:home.footer />
+    <livewire:home.copyright />
+    
+    @livewireScripts
 </body>
 
 </html>

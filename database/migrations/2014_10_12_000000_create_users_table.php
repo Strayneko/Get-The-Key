@@ -25,7 +25,7 @@ return new class extends Migration
             $table->date('birth_date');
             $table->tinyInteger('gender');
             $table->text('address');
-            $table->integer('balance');
+            $table->integer('balance')->default(0);
             $table->string('picture', 255);
             $table->timestamps();
         });

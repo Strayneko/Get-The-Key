@@ -39,12 +39,12 @@
     
             <div class="flex items-center justify-between flex-grow pl-12">
                 <div class="flex items-center space-x-6 capitalize">
-                    <a href="index.html" class="text-gray-200 hover:text-white transition">Home</a>
+                    <a href="{{ route('home.index') }}" class="text-gray-200 hover:text-white transition">Home</a>
                     <a href="pages/shop.html" class="text-gray-200 hover:text-white transition">Shop</a>
                     <a href="#" class="text-gray-200 hover:text-white transition">About us</a>
                     <a href="#" class="text-gray-200 hover:text-white transition">Contact us</a>
                 </div>
-                <a href="pages/login.html" class="text-gray-200 hover:text-white transition">Login</a>
+                <a href="{{ route('auth.auth') }}" class="text-gray-200 hover:text-white transition">Login</a>
             </div>
         </div>
     </nav>

@@ -8,14 +8,14 @@
         <form action="#" method="post" autocomplete="off">
             <div class="space-y-2">
                 <div>
-                    <label for="email" class="text-gray-600 mb-2 block">Email address</label>
-                    <input type="email" name="email" id="email"
+                    <label for="email_login" class="text-gray-600 mb-2 block">Email address</label>
+                    <input type="email"id="email_login"
                         class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
                         placeholder="youremail.@domain.com">
                 </div>
                 <div>
-                    <label for="password" class="text-gray-600 mb-2 block">Password</label>
-                    <input type="password" name="password" id="password"
+                    <label for="password_login" class="text-gray-600 mb-2 block">Password</label>
+                    <input type="password" id="password_login"
                         class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
                         placeholder="*******">
                 </div>
@@ -31,9 +31,9 @@
 
       
 
-        <p class="mt-4 text-center text-gray-600">Don't have account? <a href="register.html"
-                class="text-primary">Register
-                now</a></p>
+        <p class="mt-4 text-center text-gray-600">Don't have account? <button @click="register = true, login = false"
+                class="text-primary focus:bg-primary/25 px-1 rounded">Register
+                now</button></p>
     </div>
 </div>
 <!-- ./login -->

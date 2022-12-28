@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
@@ -34,5 +35,14 @@ Route::prefix('auth')
     ->name('auth.')
     ->controller(AuthController::class)
     ->group(function () {
-        Route::get('/', 'login')->name('login');
+        Route::get('/', 'auth')->name('auth');
+        Route::post('/registration', 'registration')->name('registration');
+    });
+
+// Dashboard route
+Route::prefix('dashboard')
+    ->name('dashboard.')
+    ->controller(DashboardController::class)
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
     });

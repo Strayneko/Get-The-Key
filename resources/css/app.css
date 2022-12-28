@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.active-nav-link {
+    @apply bg-darkerPrimary;
+}
+
+.nav-item {
+    @apply hover:bg-darkerPrimary;
+}
