@@ -18,10 +18,9 @@ return new class extends Migration
             $table->foreignId('role_id')->default(1);
             $table->foreignId('shop_id')->default(0);
             $table->string('email', 100)->unique();
-            $table->string('username', 50)->unique();
             $table->string('password', 255);
             $table->string('name', 50);
-            $table->string('phone_number')->unique();
+            $table->string('phone_number', 13)->unique();
             $table->date('birth_date');
             $table->tinyInteger('gender');
             $table->text('address');

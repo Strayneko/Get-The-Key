@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Dashboard\CategoryController as DashboardCategory;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +38,8 @@ Route::prefix('auth')
     ->controller(AuthController::class)
     ->group(function () {
         Route::get('/', 'auth')->name('auth');
+        Route::get('/logout', 'logout')->name('logout');
+        Route::post('/login', 'login')->name('login');
         Route::post('/registration', 'registration')->name('registration');
     });
 
@@ -46,3 +50,4 @@ Route::prefix('dashboard')
     ->group(function () {
         Route::get('/', 'index')->name('index');
     });
+Route::get('/tes/{id}', [DashboardCategory::class, 'show']);
