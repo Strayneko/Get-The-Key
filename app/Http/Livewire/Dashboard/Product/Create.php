@@ -89,11 +89,6 @@ class Create extends Component
         return redirect()->route('dashboard.product.index')->with('success', 'Product has been updated!');
     }
 
-    public function deleteProduct($id)
-    {
-        dd($id);
-    }
-
     public function submit()
     {
         // validate user input

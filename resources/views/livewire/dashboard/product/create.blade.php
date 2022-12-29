@@ -31,7 +31,7 @@
                     <div class="mb-4">
                         <label class="block text-sm text-gray-600" >Name</label>
                         <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"  wire:model="name"
-                            type="text" required="" placeholder="Your Name" aria-label="Name" autofocus>
+                            type="text" required="" placeholder="Product Name" aria-label="Name" autofocus>
                     </div>
 
                     <div class="mb-4">

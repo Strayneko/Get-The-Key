@@ -44,7 +44,11 @@
                     <a href="#" class="text-gray-200 hover:text-white transition">About us</a>
                     <a href="#" class="text-gray-200 hover:text-white transition">Contact us</a>
                 </div>
+                @if(Auth::guest())
                 <a href="{{ route('auth.auth') }}" class="text-gray-200 hover:text-white transition">Login</a>
+                @else
+                <a href="{{ route('auth.logout') }}" class="text-gray-200 hover:text-white transition">Logout</a>
+                @endif
             </div>
         </div>
     </nav>

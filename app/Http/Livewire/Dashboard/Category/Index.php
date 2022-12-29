@@ -7,12 +7,6 @@ use Livewire\Component;
 
 class Index extends Component
 {
-    public $categories = [];
-
-    public function mount()
-    {
-        $this->categories = Category::all();
-    }
 
     public function render()
     {

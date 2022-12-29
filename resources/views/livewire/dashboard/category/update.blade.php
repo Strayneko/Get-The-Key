@@ -26,7 +26,7 @@
 
         <div class="bg-white overflow-auto w-1/2">
             <div class="leading-loose">
-                <form class="p-10 " wire:submit.prevent="submit" enctype="multipart/form-data">
+                <form class="p-10 " wire:submit.prevent="update" enctype="multipart/form-data">
 
                     <div class="mb-4">
                         <label class="block text-sm text-gray-600">Name</label>

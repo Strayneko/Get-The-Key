@@ -10,6 +10,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Livewire\Dashboard\Category\Index as DashboardCategoryIndex;
 use App\Http\Livewire\Dashboard\Product\Create as DashboardProductCreate;
 use App\Http\Livewire\Dashboard\Product\Index as DashboardProductIndex;
+use App\Http\Livewire\Dashboard\Category\Create as DashboardCategoryCreate;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,19 +49,20 @@ Route::prefix('auth')
     });
 
 // Dashboard route
-Route::get('/dashboard/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard/', [DashboardController::class, 'index'])->name('dashboard')->middleware(['auth', 'isAdminOrSeller']);
 
-Route::prefix('dashboard/category')
+Route::prefix('dashboard/category')->middleware(['auth', 'isAdminOrSeller'])
     ->name('dashboard.category.')
     ->controller(CategoryController::class)
     ->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/create', 'create')->name('create');
+        Route::get('/', DashboardCategoryIndex::class)->name('index');
+        Route::get('/create', DashboardCategoryCreate::class)->name('create');
+        Route::get('/{category_id}/edit', DashboardCategoryCreate::class)->name('edit');
     });
 
 Route::prefix('dashboard/product')
     ->name('dashboard.product.')
-    ->middleware(['auth', 'isAdmin'])
+    ->middleware(['auth', 'isAdminOrSeller'])
     ->controller(ProductController::class)
     ->group(function () {
         Route::get('/', DashboardProductIndex::class)->name('index');
