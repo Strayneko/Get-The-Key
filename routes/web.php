@@ -10,7 +10,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Livewire\Dashboard\Category\Index as DashboardCategoryIndex;
 use App\Http\Livewire\Dashboard\Product\Create as DashboardProductCreate;
 use App\Http\Livewire\Dashboard\Product\Index as DashboardProductIndex;
+use App\Http\Livewire\Dashboard\Product\License\Index as DashboardLicenseIndex;
 use App\Http\Livewire\Dashboard\Category\Create as DashboardCategoryCreate;
+use App\Http\Livewire\Dashboard\Product\License\Create as DashboardLicenseCreate;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,5 +71,8 @@ Route::prefix('dashboard/product')
     ->group(function () {
         Route::get('/', DashboardProductIndex::class)->name('index');
         Route::get('/create', DashboardProductCreate::class)->name('create');
+        Route::get('/{product_id}/license/create', DashboardLicenseCreate::class)->name('license_create');
+        Route::get('/{product_id}/license', DashboardLicenseIndex::class)->name('license');
+        Route::get('/license/{license_id}/edit', DashboardLicenseCreate::class)->name('license_edit');
         Route::get('/{product_id}/edit', DashboardProductCreate::class)->name('edit');
     });

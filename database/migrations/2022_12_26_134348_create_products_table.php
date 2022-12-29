@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('shop_id');
             $table->string('name', 255);
             $table->integer('price');
-            $table->integer('stock');
             $table->text('description');
             $table->string('image', 255);
             $table->string('licensing_term', 30);
