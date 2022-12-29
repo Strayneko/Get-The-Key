@@ -23,7 +23,9 @@ class CategoryController extends Controller
     // TODO: show all categories
     public function index()
     {
-        return view('dashboard.category.index');
+        // get all category
+        $categories = Category::all();
+        return view('dashboard.category.index', compact('categories'));
     }
     // TODO: show create category form
     public function create()

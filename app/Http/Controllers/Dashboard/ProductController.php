@@ -21,6 +21,8 @@ class ProductController extends Controller
     // TODO: show all 
     public function index()
     {
+        $products = Product::all();
+        return view('dashboard.product.index', compact('products'));
     }
     // TODO: show one  by id
     public function show($id)
@@ -29,37 +31,9 @@ class ProductController extends Controller
     // TODO: show create  form
     public function create()
     {
+        return view('dashboard.product.create');
     }
-    // TODO: store  to database
-    public function store(Request $request)
-    {
-        // validate user input
-        $validate = Validator::make($request->all(), [
-            'category_id' => 'required|numeric|min:1',
-            'name' => 'required|min:3|max:255',
-            'price' => 'required|numeric|min:100',
-            'stock' => 'required|numeric|min:1',
-            'description' => 'required|min:3',
-            'image' => 'required|file|image|max:1024|mimes:jpg,jpeg,png',
-            'type' => 'required|min:3|max:10',
-            'licensing_term' => 'required|min:3|max:30',
-            'platform_supported' => 'required|min:1',
-            'manufacture' => 'required|min:3|max:50',
-            'max_user' => 'required|numeric|min:1',
-        ]);
-        // check validation status
-        // if fails redirect user back with last input and validation error message
-        if ($validate->fails()) return redirect()->back()->withInput()->withErrors($validate->messages()->all());
-        // get validated data
-        $validated = $validate->getData();
-        // remove unused variable
-        unset($validate);
-        // store image
-        $validated['image'] = $request->file('image')->store('images/product/', 'public');
-        // store data
-        Product::create($validated);
-        return redirect()->route('dashboard.product.index')->with('success', 'Product has been added!');
-    }
+
     // TODO: show edit  form by id
     public function edit($id)
     {
@@ -91,7 +65,7 @@ class ProductController extends Controller
         // remove unused variable
         unset($validate);
         // check whenther user upload an image
-        if ($request->input('image')) {
+        if ($request->file('image')) {
             // replace image with new image
             Storage::disk('public')->delete($product->image);
             // store new image and image name

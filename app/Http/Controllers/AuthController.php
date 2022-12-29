@@ -37,7 +37,9 @@ class AuthController extends Controller
             return redirect()->back()->withInput()->withErrors(['errors' => ['Username/Password salah!'], "type" => 'login']);
         }
         $request->session()->regenerate();
-        return redirect()->intended('home.index');
+        // check user roles
+        if (Auth::user()->role_id == 1) return redirect()->route('home.index');
+        return redirect()->route('dashboard.product.index');
     }
     // TODO: save user info to database
     public function registration(Request $request)

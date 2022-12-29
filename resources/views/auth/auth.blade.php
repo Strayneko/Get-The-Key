@@ -13,6 +13,8 @@
                  html: `{{ session()->get('success') }}`
                  })"></div>
         @endif
+
+        
         {{-- check if there is any errors send --}}
         @if($errors->any())
         {{-- initialize message variable --}}

@@ -22,9 +22,7 @@ return new class extends Migration
             $table->integer('stock');
             $table->text('description');
             $table->string('image', 255);
-            $table->string('type', 10);
             $table->string('licensing_term', 30);
-            $table->string('platform_supported');
             $table->string('manufacture', 50);
             $table->integer('max_user');
             $table->timestamps();
