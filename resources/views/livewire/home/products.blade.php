@@ -34,7 +34,7 @@
                     <div class="text-xs text-gray-500 ml-3">({{ number_format($product->stock) }})</div>
                 </div>
             </div>
-            <a href="#"
+            <a href="#" wire:click="addToCart({{ $product->id }})"
                 class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
                 to cart</a>
         </div>

@@ -27,7 +27,7 @@
                     8</div>
             </a>
             
-            <a href="#" class="text-center text-gray-700 hover:text-primary transition relative">
+            <a href="{{ route('home.cart') }}" class="text-center text-gray-700 hover:text-primary transition relative">
                 <div class="text-2xl">
                     <i class="fa-solid fa-bag-shopping"></i>
                 </div>

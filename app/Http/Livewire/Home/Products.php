@@ -9,6 +9,8 @@ class Products extends Component
 {
     public $products;
 
+
+    // add to cart function
     public function mount()
     {
         $this->products = Product::all();

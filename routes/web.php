@@ -30,6 +30,7 @@ Route::name('home.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/openshop', 'openshop')->name('openshop');
+        Route::get('/cart', 'cart')->name('cart');
     });
 
 // Dashboard route group
