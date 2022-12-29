@@ -1,10 +1,7 @@
-<div>
-    @if(session()->has('success'))
+
     <div x-init="Swal.fire(
                         'Success!',
-                        `{{ session()->get('success') }}`,
+                        `{{ $message }}`,
                         'success'
                         )">
     </div>
-    @endif
-</div>

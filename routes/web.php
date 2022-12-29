@@ -29,8 +29,8 @@ Route::name('home.')
     ->controller(HomeController::class)
     ->group(function () {
         Route::get('/', 'index')->name('index');
-        Route::get('/openshop', 'openshop')->name('openshop');
-        Route::get('/cart', 'cart')->name('cart');
+        Route::get('/openshop', 'openshop')->name('openshop')->middleware(['auth']);
+        Route::get('/cart', 'cart')->name('cart')->middleware(['auth']);
     });
 
 // Dashboard route group

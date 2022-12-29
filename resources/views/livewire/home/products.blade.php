@@ -1,9 +1,17 @@
 <div class="container pb-16">
+        <div x-init="@this.on('addedToCart', () => {
+            Swal.fire(
+            'Success!',
+            `Product has added to cart succesfully!`,
+            'success'
+            )
+            })"></div>
+
     <h2 class="text-2xl font-medium text-gray-800 uppercase mb-6">product list</h2>
     <div class="grid grid-cols-4 gap-6">
         @if(count($products) > 0)
         @foreach($products as $product)
-        <div class="bg-white shadow rounded overflow-hidden group">
+        <div class="bg-white shadow rounded overflow-hidden group" wire:key="{{ 'product-' . $product->id }}">
             <div class="relative">
                 <img src="{{ asset('storage/' . $product->image) }}" alt="product {{ $product->id }}" class="w-full">
                 <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
@@ -34,9 +42,9 @@
                     <div class="text-xs text-gray-500 ml-3">({{ number_format($product->stock) }})</div>
                 </div>
             </div>
-            <a href="#" wire:click="addToCart({{ $product->id }})"
-                class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add
-                to cart</a>
+            <button wire:click.prevent="addToCart({{ $product->id }})" wire:loading.attr="disabled"
+                class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary disabled:grayscale transition">Add
+                to cart</button>
         </div>
         @endforeach
         @else

@@ -12,7 +12,7 @@ class Header extends Component
 
     public function mount()
     {
-        $this->shop = Shop::where('user_id', Auth::user()->id)->first();
+        if (!Auth::guest()) $this->shop = Shop::where('user_id', Auth::user()->id)->first();
     }
     public function render()
     {
