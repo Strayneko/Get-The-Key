@@ -17,13 +17,18 @@ class ProductCart extends Component
     public function mount()
     {
         $this->cart = Cart::where('user_id', Auth::user()->id)->first();
-        $this->user_carts = UserCart::where('cart_id', $this->cart->id)->with('product')->get();
-        // count total price
-        $total_price = 0;
-        foreach ($this->user_carts as $user_cart) {
-            $total_price += $user_cart->product->price * $user_cart->quantity;
+        if ($this->cart) {
+            $this->user_carts = UserCart::where('cart_id', $this->cart->id)->with('product')->get();
+
+            // count total price
+            $total_price = 0;
+            foreach ($this->user_carts as $user_cart) {
+                $total_price += $user_cart->product->price * $user_cart->quantity;
+            }
+            $this->total_price = $total_price;
+        } else {
+            $this->user_carts = [];
         }
-        $this->total_price = $total_price;
     }
 
     public function dehydrate()

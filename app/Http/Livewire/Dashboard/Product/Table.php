@@ -26,7 +26,7 @@ class Table extends Component
     {
         // get shop associated with current user login
         $this->shop = Shop::where('user_id', Auth::user()->id)->first();
-        $this->products = Product::where('shop_id', $this->shop->id)->get();
+        $this->products = Product::where('shop_id', $this->shop->id)->with('license')->get();
     }
     public function render()
     {

@@ -23,9 +23,7 @@
                     <i class="fa-solid fa-bag-shopping"></i>
                 </div>
                 <div class="text-xs leading-3">Cart</div>
-                <div
-                    class="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
-                    2</div>
+
             </a>
             @if(empty($shop))
             <a href="{{ route('home.openshop') }}" class="text-center text-gray-700 hover:text-primary transition relative">
