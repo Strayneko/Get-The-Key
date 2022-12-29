@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Dashboard\Product;
 use App\Models\Category;
 use Livewire\Component;
 use App\Models\Product;
+use App\Models\Shop;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
 
@@ -15,6 +17,7 @@ class Create extends Component
     public $category_id, $shop_id, $name, $price, $stock, $description, $image, $type, $licensing_term, $platform_supported, $manufacture, $max_user;
     public $categories;
     public $product;
+    public $shop;
     protected $listeners = ['deleteProduct'];
     // set validation rules
     protected $rules = [
@@ -33,6 +36,8 @@ class Create extends Component
 
     public function mount()
     {
+        // get shop associated with current user login
+        $this->shop = Shop::where('user_id', Auth::user()->id)->first();
         $this->categories = Category::all();
         // check if there is product_id passed
         if ($this->product_id > 0) {
@@ -66,7 +71,7 @@ class Create extends Component
             'licensing_term' => $this->licensing_term,
             'manufacture' => $this->manufacture,
             'max_user' => $this->max_user,
-            'shop_id' => 1
+            'shop_id' => $this->shop->id
         ];
     }
     // update product

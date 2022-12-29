@@ -29,6 +29,7 @@ Route::name('home.')
     ->controller(HomeController::class)
     ->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('/openshop', 'openshop')->name('openshop');
     });
 
 // Dashboard route group

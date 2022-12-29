@@ -9,9 +9,6 @@
     <livewire:home.categories />
     
 
-    <!-- new arrival -->
-    <livewire:home.newarival />
-    <!-- ./new arrival -->
 
     
     <!-- product -->

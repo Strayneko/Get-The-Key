@@ -18,12 +18,6 @@
                     
                 </div>
                 <div>
-                    <label for="username" class="text-gray-600 mb-2 block">Username</label>
-                    <input type="text" name="username" value="{{ old('username') }}" id="username"
-                        class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
-                        placeholder="fulan fulana" >
-                </div>
-                <div>
                     <label for="password" class="text-gray-600 mb-2 block">Password</label>
                     <input type="password" name="password" id="password"
                     class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"

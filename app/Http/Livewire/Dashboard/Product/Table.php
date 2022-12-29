@@ -5,6 +5,8 @@ namespace App\Http\Livewire\Dashboard\Product;
 use Livewire\Component;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Shop;
+use Illuminate\Support\Facades\Auth;
 
 class Table extends Component
 {
@@ -22,7 +24,9 @@ class Table extends Component
 
     public function mount()
     {
-        $this->products = Product::all();
+        // get shop associated with current user login
+        $this->shop = Shop::where('user_id', Auth::user()->id)->first();
+        $this->products = Product::where('shop_id', $this->shop->id)->get();
     }
     public function render()
     {

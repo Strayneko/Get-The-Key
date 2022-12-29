@@ -26,6 +26,7 @@
                     class="absolute right-0 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
                     8</div>
             </a>
+            
             <a href="#" class="text-center text-gray-700 hover:text-primary transition relative">
                 <div class="text-2xl">
                     <i class="fa-solid fa-bag-shopping"></i>
@@ -35,12 +36,14 @@
                     class="absolute -right-3 -top-1 w-5 h-5 rounded-full flex items-center justify-center bg-primary text-white text-xs">
                     2</div>
             </a>
-            <a href="#" class="text-center text-gray-700 hover:text-primary transition relative">
+            @if(empty($shop))
+            <a href="{{ route('home.openshop') }}" class="text-center text-gray-700 hover:text-primary transition relative">
                 <div class="text-2xl">
-                    <i class="fa-regular fa-user"></i>
+                    <i class="fa-solid fa-shop"></i>
                 </div>
-                <div class="text-xs leading-3">Account</div>
+                <div class="text-xs leading-3">Open Shop</div>
             </a>
+            @endif
         </div>
     </div>
 </header>
