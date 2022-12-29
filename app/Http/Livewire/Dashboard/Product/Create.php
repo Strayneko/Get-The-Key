@@ -14,7 +14,7 @@ class Create extends Component
 {
     use WithFileUploads;
     public $product_id = 0;
-    public $category_id, $shop_id, $name, $price, $stock, $description, $image, $type, $licensing_term, $platform_supported, $manufacture, $max_user;
+    public $category_id, $shop_id, $name, $price, $description, $image, $type, $licensing_term, $platform_supported, $manufacture, $max_user;
     public $categories;
     public $product;
     public $shop;
@@ -24,7 +24,6 @@ class Create extends Component
         'category_id' => 'required|numeric|min:1',
         'name' => 'required|min:3|max:255',
         'price' => 'required|numeric|min:100',
-        'stock' => 'required|numeric|min:1',
         'description' => 'required|min:3',
         'image' => 'required|file|image|max:1024|mimes:jpg,jpeg,png',
         'licensing_term' => 'required|min:1|max:30',
@@ -49,7 +48,6 @@ class Create extends Component
             // set attribute
             $this->name = $product->name;
             $this->price = $product->price;
-            $this->stock = $product->stock;
             $this->description = $product->description;
             $this->type = $product->type;
             $this->licensing_term = $product->licensing_term;
@@ -66,7 +64,6 @@ class Create extends Component
             'category_id' => $this->category_id,
             'name' => $this->name,
             'price' => $this->price,
-            'stock' => $this->stock,
             'description' => $this->description,
             'licensing_term' => $this->licensing_term,
             'manufacture' => $this->manufacture,

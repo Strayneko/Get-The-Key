@@ -39,12 +39,6 @@
                         <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"  wire:model="price"
                             type="number" required="" placeholder="Rp.">
                     </div>
-
-                    <div class="mb-4">
-                        <label class="block text-sm text-gray-600" >Stock</label>
-                        <input class="w-full px-5 py-1 text-gray-700 bg-gray-200 rounded"  wire:model="stock"
-                            type="number" required="" placeholder="1">
-                    </div>
                     
                     <div class="mb-4">
                         <label class="block text-sm text-gray-600" >Max User</label>
