@@ -66,6 +66,8 @@ class ProductCart extends Component
     public function minCartQuantity($product_id)
     {
         $product_in_cart = UserCart::where('product_id', $product_id)->first();
+        // remove item from cart is quantity below 1
+        if ($product_in_cart->quantity == 1) $this->removeCartItem($product_id);
         $product_in_cart->update(['quantity' => $product_in_cart->quantity - 1]);
 
         $this->emit('refreshCart');
