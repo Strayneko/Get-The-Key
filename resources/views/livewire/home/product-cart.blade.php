@@ -46,6 +46,18 @@
     <span class="text-center w-1/5 font-semibold text-sm">Rp{{ number_format($user_cart->quantity * $user_cart->product->price) }}</span>
 </div>
 @endforeach
+<div class="flex flex-col items-end gap-4">
+    
+    <div class="border-t mt-8 w-1/3" >
+        <div class="flex flex-col font-semibold gap-5 py-6 text-sm uppercase">
+            <span>Total cost</span>
+            <span>Rp{{number_format($total_price) }}</span>
+        </div>
+        <button
+        class="bg-primary font-semibold hover:bg-darkerPrimary py-3 text-sm text-white uppercase w-full">Checkout</button>
+    </div>
+</div>
+
 @else
 <h1 class="text-gray-800 text-center text-semibold text-xl">No product available in your cart</h1>
 @endif

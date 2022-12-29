@@ -39,11 +39,11 @@
                     <div class="flex gap-1 text-sm text-gray-800">
                         Stock
                     </div>
-                    <div class="text-xs text-gray-500 ml-3">({{ number_format($product->stock) }})</div>
+                    <div class="text-xs text-gray-500 ml-3">({{ $product->stock <= 0 ? 'Habis' : number_format($product->stock) }})</div>
                 </div>
             </div>
-            <button wire:click.prevent="addToCart({{ $product->id }})" wire:loading.attr="disabled"
-                class="block w-full py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary disabled:grayscale transition">Add
+            <button @if($product->stock <= 0) disabled @endif wire:click.prevent="addToCart({{ $product->id }})" wire:loading.attr="disabled"
+                class="block w-full disabled:cursor-not-allowed py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary disabled:grayscale transition">Add
                 to cart</button>
         </div>
         @endforeach

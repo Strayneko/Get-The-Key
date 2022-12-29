@@ -1,5 +1,9 @@
 <main class="w-full flex-grow p-6" x-data="{show: false}">
-    <livewire:subcomponents.alert.success />
+
+   @if(session()->has('success'))
+    <livewire:subcomponents.alert.success :message="session()->get('success')" />
+    @endif
+
     <h1 class="text-3xl text-black pb-6">Dashboard</h1>
     <div class="w-full mt-12">
         <p class="text-xl pb-3 flex items-center">

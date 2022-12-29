@@ -1,6 +1,8 @@
 <div>
 
-<livewire:subcomponents.alert.success />
+@if(session()->has('success'))
+<livewire:subcomponents.alert.success :message="session()->get('success')" />
+@endif
 
 </div>
     <main class="w-full flex-grow p-6" x-data="{show: false}">
