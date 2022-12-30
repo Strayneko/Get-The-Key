@@ -37,6 +37,8 @@ Route::name('home.')
         Route::get('/cart', 'cart')->name('cart')->middleware(['auth']);
         Route::get('/checkout/{id}', 'checkout')->name('checkout')->middleware(['auth']);
         Route::get('/transaction', 'transactions')->name('transaction_list')->middleware(['auth']);
+        Route::get('/transaction/{transaction_id}', 'transaction_detail')->name('transaction_detail')->middleware(['auth']);
+        Route::get('/transaction/{transaction_id}/save', 'save_transaction')->name('save_transaction')->middleware(['auth']);
     });
 
 // Dashboard route group
