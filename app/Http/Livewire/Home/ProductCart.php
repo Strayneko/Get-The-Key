@@ -3,6 +3,9 @@
 namespace App\Http\Livewire\Home;
 
 use App\Models\Cart;
+use App\Models\License;
+use App\Models\Product;
+use App\Models\Transaction;
 use App\Models\UserCart;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -72,6 +75,42 @@ class ProductCart extends Component
 
         $this->emit('refreshCart');
     }
+
+    public function checkout()
+    {
+        $cart = Cart::where('user_id', Auth::user()->id)->first();
+        $checkout_item = UserCart::where('cart_id', $cart->id);
+        $license_items = [];
+        // check product stock
+        foreach ($checkout_item->get() as $item) {
+            // prevent checkout when product is out of stock
+            if ($item->quantity > count($item->product->license)) return session()->flash('error', 'Product ' . $item->product->name . ' has out of stock!');
+            // update product license status
+            $licenses = License::where('product_id', $item->product->id)->where('status', '>', 0)->limit($item->quantity)->get();
+            foreach ($licenses as $license) {
+
+                array_push($license_items, $license);
+            }
+        }
+        // store transaction record to database
+        $checkout = Transaction::create([
+            'user_id' => Auth::user()->id,
+            'cart_id' => $cart->id,
+            'paid_date' => null,
+            'status' => '0',
+            'total' => $this->total_price,
+            'receipt_image' => null
+        ]);
+        foreach ($license_items as $item) {
+            // update license stock
+            $item->update(['transaction_id' => $checkout->id, 'status' => 0]);
+        }
+        // remove cart from database
+        $checkout_item->delete();
+        $cart->delete();
+        return redirect()->route('home.checkout', ['id' => $checkout])->with('success', 'Checkout success! Please upload your transfer receipt!');
+    }
+
     public function render()
     {
 

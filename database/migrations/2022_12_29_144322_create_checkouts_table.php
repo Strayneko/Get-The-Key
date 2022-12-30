@@ -13,15 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('checkouts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('cart_id');
-            $table->foreignId('transaction_id');
-            $table->date('paid_date')->nullable();
-            $table->tinyInteger('status');
-            $table->integer('total');
-            $table->string('receipt_image', 255)->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('checkouts');
     }
 };

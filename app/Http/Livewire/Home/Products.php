@@ -7,6 +7,7 @@ use Livewire\Component;
 use App\Models\Cart;
 use App\Models\UserCart;
 use Illuminate\Support\Facades\Auth;
+use App\Models\License;
 
 class Products extends Component
 {
@@ -16,15 +17,15 @@ class Products extends Component
     // check product stock
     private function checkStock($product_id)
     {
-        $product = Product::find($product_id)->first();
-        if ($product->stock - 1 <= 0) {
-            session()->flash('error', 'This product out of stock');
-            exit;
+        $product = License::where('product_id', $product_id)->where('status', '>', 0)->get();
+        if (count($product) - 1 <= 0) {
+            return session()->flash('success', 'This product out of stock');
         }
     }
     // add to cart function
     public function addToCart($product_id)
     {
+        $this->checkStock($product_id);
         // find cart with current useer login id
         $cart = Cart::where('user_id', Auth::user()->id)->first();
         // create cart if user has no cart yet
@@ -48,7 +49,7 @@ class Products extends Component
     }
     public function mount()
     {
-        $this->products = Product::all();
+        $this->products = Product::with('license')->get();
     }
     public function render()
     {

@@ -2,6 +2,10 @@
     @if(session()->has('success'))
     <livewire:subcomponents.alert.success :message="session()->get('success')" />
     @endif
+    {{-- response error --}}
+        @if(session()->has('error'))
+        <livewire:subcomponents.alert.error :message="session()->get('error')" />
+        @endif
     @if(count($user_carts) > 0)
     @foreach($user_carts as $user_cart)
 <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
@@ -54,7 +58,7 @@
             <span>Rp{{number_format($total_price) }}</span>
         </div>
         <button
-        class="bg-primary font-semibold hover:bg-darkerPrimary py-3 text-sm text-white uppercase w-full">Checkout</button>
+        class="bg-primary font-semibold hover:bg-darkerPrimary py-3 text-sm text-white uppercase w-full" wire:click.prevent="checkout">Checkout</button>
     </div>
 </div>
 

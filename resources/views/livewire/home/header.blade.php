@@ -2,7 +2,7 @@
 <header class="py-4 shadow-sm bg-white">
     <div class="container flex items-center justify-between">
         <a href="index.html">
-            <img src="assets/images/logo.svg" alt="Logo" class="w-32">
+            <img src="{{ asset('assets/images/logo.svg') }}" alt="Logo" class="w-32">
         </a>
 
         <div class="w-full max-w-xl relative flex">
@@ -23,6 +23,13 @@
                     <i class="fa-solid fa-bag-shopping"></i>
                 </div>
                 <div class="text-xs leading-3">Cart</div>
+
+            </a>
+            <a href="{{ route('home.transaction_list') }}" class="text-center text-gray-700 hover:text-primary transition relative">
+                <div class="text-2xl">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+                <div class="text-xs leading-3">Transactions</div>
 
             </a>
             @if(empty($shop))

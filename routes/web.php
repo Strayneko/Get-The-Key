@@ -33,6 +33,8 @@ Route::name('home.')
         Route::get('/', 'index')->name('index');
         Route::get('/openshop', 'openshop')->name('openshop')->middleware(['auth']);
         Route::get('/cart', 'cart')->name('cart')->middleware(['auth']);
+        Route::get('/checkout/{id}', 'checkout')->name('checkout')->middleware(['auth']);
+        Route::get('/transaction', 'transactions')->name('transaction_list')->middleware(['auth']);
     });
 
 // Dashboard route group
