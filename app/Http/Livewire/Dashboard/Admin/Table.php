@@ -19,7 +19,7 @@ class Table extends Component
             $this->emit('refreshTable');
             return session()->flash('error', "Don't delete yourself :)");
         }
-        Storage::disk('public')->delete($user->pricture);
+        Storage::disk('public')->delete($user->picture);
         $user->delete();
         session()->flash('success', 'Data has been deleted');
         $this->emit('refreshTable');
