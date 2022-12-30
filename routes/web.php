@@ -13,6 +13,8 @@ use App\Http\Livewire\Dashboard\Product\Index as DashboardProductIndex;
 use App\Http\Livewire\Dashboard\Product\License\Index as DashboardLicenseIndex;
 use App\Http\Livewire\Dashboard\Category\Create as DashboardCategoryCreate;
 use App\Http\Livewire\Dashboard\Product\License\Create as DashboardLicenseCreate;
+use App\Http\Livewire\Dashboard\Transaction\Index as DashboardTransactionIndex;
+use App\Http\Livewire\Dashboard\Transaction\Detail as DashboardTransactionDetail;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,7 +71,6 @@ Route::prefix('dashboard/category')->middleware(['auth', 'isAdminOrSeller'])
 Route::prefix('dashboard/product')
     ->name('dashboard.product.')
     ->middleware(['auth', 'isAdminOrSeller'])
-    ->controller(ProductController::class)
     ->group(function () {
         Route::get('/', DashboardProductIndex::class)->name('index');
         Route::get('/create', DashboardProductCreate::class)->name('create');
@@ -77,4 +78,12 @@ Route::prefix('dashboard/product')
         Route::get('/{product_id}/license', DashboardLicenseIndex::class)->name('license');
         Route::get('/license/{license_id}/edit', DashboardLicenseCreate::class)->name('license_edit');
         Route::get('/{product_id}/edit', DashboardProductCreate::class)->name('edit');
+    });
+
+Route::prefix('dashboard/transaction')
+    ->name('dashboard.transaction.')
+    ->middleware(['auth', 'isAdmin'])
+    ->group(function () {
+        Route::get('/', DashboardTransactionIndex::class)->name('index');
+        Route::get('/{transaction_id}', DashboardTransactionDetail::class)->name('detail');
     });

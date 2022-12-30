@@ -39,6 +39,7 @@ class AuthController extends Controller
         $request->session()->regenerate();
         // check user roles
         if (Auth::user()->role_id == 1) return redirect()->route('home.index');
+        if (Auth::user()->role_id == 3) return redirect()->route('dashboard.transaction.index');
         return redirect()->route('dashboard.product.index');
     }
     // TODO: save user info to database

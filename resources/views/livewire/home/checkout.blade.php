@@ -30,7 +30,7 @@
         })"></div>
     @endif
 
-@if($transaction->status != 0 && $transaction->status != 4)
+@if($transaction->status != 0 && $transaction->status != 3)
 
 
 <div class="bg-white p-6  md:mx-auto">
