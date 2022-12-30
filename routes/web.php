@@ -16,6 +16,8 @@ use App\Http\Livewire\Dashboard\Category\Create as DashboardCategoryCreate;
 use App\Http\Livewire\Dashboard\Product\License\Create as DashboardLicenseCreate;
 use App\Http\Livewire\Dashboard\Transaction\Index as DashboardTransactionIndex;
 use App\Http\Livewire\Dashboard\Transaction\Detail as DashboardTransactionDetail;
+use App\Http\Livewire\Dashboard\Admin\Index as DashboardAdminIndex;
+use App\Http\Livewire\Dashboard\Admin\Create as DashboardAdminCreate;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,4 +89,14 @@ Route::prefix('dashboard/transaction')
     ->group(function () {
         Route::get('/', DashboardTransactionIndex::class)->name('index');
         Route::get('/{transaction_id}', DashboardTransactionDetail::class)->name('detail');
+    });
+
+
+Route::prefix('dashboard/admin')
+    ->name('dashboard.admin.')
+    ->middleware(['auth', 'isAdmin'])
+    ->group(function () {
+        Route::get('/', DashboardAdminIndex::class)->name('index');
+        Route::get('/create', DashboardAdminCreate::class)->name('create');
+        Route::get('/{user_id}/edit', DashboardAdminCreate::class)->name('edit');
     });
