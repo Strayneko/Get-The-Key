@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\License;
+use App\Models\Cart;
+use App\Models\UserCart;
 
 class HomeController extends Controller
 {
@@ -55,6 +57,13 @@ class HomeController extends Controller
         return view('home.transaction_detail', compact('transaction'));
     }
 
+    public function product_detail($id)
+    {
+        $product = Product::find($id);
+        $license = License::where('product_id', $product->id)->where('status', '>', 0)->get();
+        $cart = Cart::where('user_id', Auth::user()->id)->first();
+        return view('home.product_detail', ['product' => $product, 'license' => $license]);
+    }
     public function save_transaction($transaction_id)
     {
         $transaction = Transaction::where('user_id', Auth::user()->id)->where('id', $transaction_id)->get();

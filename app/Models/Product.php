@@ -14,4 +14,8 @@ class Product extends Model
     {
         return $this->hasMany(License::class, 'product_id');
     }
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 }

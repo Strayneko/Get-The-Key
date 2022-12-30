@@ -39,6 +39,14 @@
                 </div>
                 <div class="text-xs leading-3">Open Shop</div>
             </a>
+            @else
+            <a href="{{ route('dashboard.product.index') }}" class="text-center text-gray-700 hover:text-primary transition relative">
+                <div class="text-2xl">
+                   <i class="fa-solid fa-gauge"></i>
+                </div>
+                <div class="text-xs leading-3">Dashboard</div>
+            </a>
+
             @endif
         </div>
         @else

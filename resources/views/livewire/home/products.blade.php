@@ -16,15 +16,10 @@
                 <img src="{{ asset('storage/' . $product->image) }}" alt="product {{ $product->id }}" class="w-full">
                 <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
                         justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
-                    <a href="#"
+                    <a href="{{ route('home.product_detail', ['id' => $product->id]) }}"
                         class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
                         title="view product">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                    </a>
-                    <a href="#"
-                        class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
-                        title="add to wishlist">
-                        <i class="fa-solid fa-heart"></i>
                     </a>
                 </div>
             </div>
@@ -39,7 +34,7 @@
                     <div class="flex gap-1 text-sm text-gray-800">
                         Stock
                     </div>
-                    <div class="text-xs text-gray-500 ml-3">({{ count($product->license->where('status', '>', 0)) <= 0 ? 'Habis' : number_format(count($product->license)) }})</div>
+                    <div class="text-xs text-gray-500 ml-3">({{ count($product->license->where('status', '>', 0)) <= 0 ? 'Habis' : number_format(count($product->license->where('status', '>', 0))) }})</div>
                 </div>
             </div>
             <button @if(count($product->license->where('status', '>', 0)) <= 0) disabled @endif wire:click.prevent="addToCart({{ $product->id }})" wire:loading.attr="disabled"

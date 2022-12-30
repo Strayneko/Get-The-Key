@@ -21,6 +21,7 @@ class ProductCart extends Component
     {
         $this->cart = Cart::where('user_id', Auth::user()->id)->first();
         if ($this->cart) {
+            // check product in cart
             $this->user_carts = UserCart::where('cart_id', $this->cart->id)->with('product')->get();
 
             // count total price

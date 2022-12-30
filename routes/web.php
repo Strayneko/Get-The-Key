@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Dashboard\CategoryController as DashboardCategory;
 use App\Http\Controllers\Dashboard\CategoryController;
@@ -35,16 +36,11 @@ Route::name('home.')
         Route::get('/', 'index')->name('index');
         Route::get('/openshop', 'openshop')->name('openshop')->middleware(['auth']);
         Route::get('/cart', 'cart')->name('cart')->middleware(['auth']);
+        Route::get('/product/{id}', 'product_detail')->name('product_detail');
         Route::get('/checkout/{id}', 'checkout')->name('checkout')->middleware(['auth']);
         Route::get('/transaction', 'transactions')->name('transaction_list')->middleware(['auth']);
         Route::get('/transaction/{transaction_id}', 'transaction_detail')->name('transaction_detail')->middleware(['auth']);
         Route::get('/transaction/{transaction_id}/save', 'save_transaction')->name('save_transaction')->middleware(['auth']);
-    });
-
-// Dashboard route group
-Route::prefix('dashboard')
-    ->name('dashboard.')
-    ->group(function () {
     });
 
 // Auth route group
@@ -59,7 +55,10 @@ Route::prefix('auth')
     });
 
 // Dashboard route
-Route::get('/dashboard/', [DashboardController::class, 'index'])->name('dashboard')->middleware(['auth', 'isAdminOrSeller']);
+Route::get('/dashboard/', function () {
+    if (Auth::user()->role_id == 2) return redirect()->route('dashboard.product.index');
+    return redirect()->route('dashboard.transaction.index');
+});
 
 Route::prefix('dashboard/category')->middleware(['auth', 'isAdminOrSeller'])
     ->name('dashboard.category.')
