@@ -47,7 +47,7 @@
         
         
             <div class="mt-4">
-                <button type="submit"
+                <button wire:loading.attr="disabled" wire:target="picture" type="submit"
                     class="block w-full py-2 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary disabled:cursor-not-allowed disabled:grayscale transition uppercase font-roboto font-medium">open
                     shop</button>
             </div>

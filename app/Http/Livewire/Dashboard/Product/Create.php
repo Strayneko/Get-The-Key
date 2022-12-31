@@ -40,8 +40,8 @@ class Create extends Component
         $this->categories = Category::all();
         // check if there is product_id passed
         if ($this->product_id > 0) {
-            // get product by id
-            $product = Product::find($this->product_id);
+            // get product by id associated with current user login
+            $product = Product::where('shop_id', $this->shop->id)->where('id', $this->product_id)->first();
             // give 404 message if product not found
             if (!$product) abort(404);
             $this->product = $product;

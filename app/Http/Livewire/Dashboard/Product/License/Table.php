@@ -10,6 +10,7 @@ class Table extends Component
     public $licenses;
     protected $listeners = ['refreshTable' => '$refresh'];
 
+
     public function deleteLicense($id)
     {
         $license = License::find($id);

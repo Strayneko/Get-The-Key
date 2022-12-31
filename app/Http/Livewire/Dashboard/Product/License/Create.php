@@ -3,6 +3,9 @@
 namespace App\Http\Livewire\Dashboard\Product\License;
 
 use App\Models\License;
+use App\Models\Product;
+use App\Models\Shop;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Create extends Component
@@ -40,8 +43,11 @@ class Create extends Component
     {
         $this->product_id = $this->product_id;
         if ($this->license_id) {
+            $shop = Shop::where('user_id', Auth::user()->id)->first();
+            $product = Product::where('shop_id', $shop->id)->first();
             // find license key by id
-            $license = License::find($this->license_id)->first();
+            $license = License::where('id', $this->license_id)->where('product_id', $product->id)->first();
+            if (!$license) abort(404);
             // set product id
             $this->product_id = $license->product_id;
             $this->license_key = $license->license_key;

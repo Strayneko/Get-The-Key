@@ -30,6 +30,9 @@
                 <div class="flex items-baseline mb-1 space-x-2">
                     <p class="text-xl text-primary font-semibold">Rp{{ number_format($product->price) }}</p>
                 </div>
+                <p class="items-baseline mb-1 space-x-2 text-green-500">
+                    In {{ $product->category->name }}
+                </p>
                 <div class="flex items-center">
                     <div class="flex gap-1 text-sm text-gray-800">
                         Stock

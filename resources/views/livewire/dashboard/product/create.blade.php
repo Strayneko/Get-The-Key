@@ -82,7 +82,7 @@
                     </div>
 
                     <div class="mt-6">
-                        <button wire:loading.attr="disabled" wire:target="file" class="px-4 py-1 disabled:grayscale disabled:cursor-not-allowed text-white font-light tracking-wider bg-primary hover:bg-darkerPrimary hover:-translate-y-1 transition rounded"
+                        <button wire:loading.attr="disabled" wire:target="image" class="px-4 py-1 disabled:grayscale disabled:cursor-not-allowed text-white font-light tracking-wider bg-primary hover:bg-darkerPrimary hover:-translate-y-1 transition rounded"
                             type="submit">Submit</button>
 
                         <a href="{{ route('dashboard.product.index') }}" class="px-4 py-1 disabled:grayscale disabled:cursor-not-allowed text-white font-light tracking-wider bg-green-500 hover:bg-green-700 hover:-translate-y-1 transition rounded"

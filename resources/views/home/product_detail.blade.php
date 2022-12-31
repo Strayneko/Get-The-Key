@@ -33,6 +33,10 @@
                 @endif
             </p>
             <p class="space-x-2">
+                <span class="text-gray-800 font-semibold">Seller: </span>
+                <span class="text-gray-600">{{ $product->shop->name }}</span>
+            </p>
+            <p class="space-x-2">
                 <span class="text-gray-800 font-semibold">Brand: </span>
                 <span class="text-gray-600">{{ $product->manufacture }}</span>
             </p>

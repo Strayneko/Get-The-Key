@@ -18,6 +18,7 @@ use App\Http\Livewire\Dashboard\Transaction\Index as DashboardTransactionIndex;
 use App\Http\Livewire\Dashboard\Transaction\Detail as DashboardTransactionDetail;
 use App\Http\Livewire\Dashboard\Admin\Index as DashboardAdminIndex;
 use App\Http\Livewire\Dashboard\Admin\Create as DashboardAdminCreate;
+use App\Http\Livewire\Dashboard\Market\Update as DashboardShopUpdate;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,18 +63,19 @@ Route::get('/dashboard/', function () {
     return redirect()->route('dashboard.transaction.index');
 });
 
-Route::prefix('dashboard/category')->middleware(['auth', 'isAdminOrSeller'])
+// dashboard category route group
+Route::prefix('dashboard/category')->middleware(['auth', 'isAdmin'])
     ->name('dashboard.category.')
-    ->controller(CategoryController::class)
     ->group(function () {
         Route::get('/', DashboardCategoryIndex::class)->name('index');
         Route::get('/create', DashboardCategoryCreate::class)->name('create');
         Route::get('/{category_id}/edit', DashboardCategoryCreate::class)->name('edit');
     });
 
+// dashboard product route group
 Route::prefix('dashboard/product')
     ->name('dashboard.product.')
-    ->middleware(['auth', 'isAdminOrSeller'])
+    ->middleware(['auth', 'isSeller'])
     ->group(function () {
         Route::get('/', DashboardProductIndex::class)->name('index');
         Route::get('/create', DashboardProductCreate::class)->name('create');
@@ -83,6 +85,7 @@ Route::prefix('dashboard/product')
         Route::get('/{product_id}/edit', DashboardProductCreate::class)->name('edit');
     });
 
+// dashboard transaction route group
 Route::prefix('dashboard/transaction')
     ->name('dashboard.transaction.')
     ->middleware(['auth', 'isAdmin'])
@@ -91,7 +94,7 @@ Route::prefix('dashboard/transaction')
         Route::get('/{transaction_id}', DashboardTransactionDetail::class)->name('detail');
     });
 
-
+// dashboard admin route group
 Route::prefix('dashboard/admin')
     ->name('dashboard.admin.')
     ->middleware(['auth', 'isAdmin'])
@@ -99,4 +102,12 @@ Route::prefix('dashboard/admin')
         Route::get('/', DashboardAdminIndex::class)->name('index');
         Route::get('/create', DashboardAdminCreate::class)->name('create');
         Route::get('/{user_id}/edit', DashboardAdminCreate::class)->name('edit');
+    });
+
+// dashboard shop route group
+Route::prefix('dashboard/shop')
+    ->name('dashboard.shop.')
+    ->middleware(['auth', 'isSeller'])
+    ->group(function () {
+        Route::get('/', DashboardShopUpdate::class)->name('update');
     });
