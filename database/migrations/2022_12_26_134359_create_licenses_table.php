@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('licenses', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id');
+            $table->foreignId('transaction_id')->default(0);
             $table->string('license_key', 50);
             $table->tinyInteger('status')->default(0);
             $table->timestamps();

@@ -1,5 +1,5 @@
 @extends('templates.base')
-@section('title', 'tes')
+@section('title', 'Cart')
 @section('content')
 
 <div class="container mx-auto mt-10" >

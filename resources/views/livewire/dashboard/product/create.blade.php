@@ -78,11 +78,11 @@
                     <div class="mb-4">
                         <label class="block text-sm text-gray-600" >Image</label>
                         <input class="block w-full text-sm file:bg-primary file:outline-none file:border-none file:text-white file:py-2 file:px-2 file:hover:cursor-pointer text-primary-900 border border-gray-300 rounded-lg cursor-pointer focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                            id="file_input" type="file" wire:model="image">
+                            id="file_input" type="file" wire:model.lazy="image">
                     </div>
 
                     <div class="mt-6">
-                        <button class="px-4 py-1 disabled:grayscale disabled:cursor-not-allowed text-white font-light tracking-wider bg-primary hover:bg-darkerPrimary hover:-translate-y-1 transition rounded"
+                        <button wire:loading.attr="disabled" wire:target="file" class="px-4 py-1 disabled:grayscale disabled:cursor-not-allowed text-white font-light tracking-wider bg-primary hover:bg-darkerPrimary hover:-translate-y-1 transition rounded"
                             type="submit">Submit</button>
 
                         <a href="{{ route('dashboard.product.index') }}" class="px-4 py-1 disabled:grayscale disabled:cursor-not-allowed text-white font-light tracking-wider bg-green-500 hover:bg-green-700 hover:-translate-y-1 transition rounded"

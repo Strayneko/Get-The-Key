@@ -97,10 +97,8 @@ class ProductCart extends Component
         $checkout = Transaction::create([
             'user_id' => Auth::user()->id,
             'cart_id' => $cart->id,
-            'paid_date' => null,
             'status' => '0',
             'total' => $this->total_price,
-            'receipt_image' => null
         ]);
         foreach ($license_items as $item) {
             // update license stock

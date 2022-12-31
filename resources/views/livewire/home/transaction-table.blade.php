@@ -47,8 +47,10 @@
                 <a href="{{ route('home.checkout', ['id' => $transaction->id]) }}"
                     class="text-white bg-green-500 inline-block py-1 px-2 rounded hover:bg-green-600 focus:bg-green-600 hover:-translate-y-1 transition-transform hover:shadow-lg">Pay</a>
                 @endif
+                @if($transaction->status == 2)
                 <a href="{{ route('home.transaction_detail', ['transaction_id' => $transaction->id]) }}"
                     class="text-white bg-yellow-500 inline-block py-1 px-2 rounded hover:bg-yellow-600 focus:bg-yellow-600 hover:-translate-y-1 transition-transform hover:shadow-lg">Detail</a>
+                    @endif
             </td>
         </tr>
         @endforeach

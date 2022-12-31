@@ -17,7 +17,7 @@ class TransactionTable extends Component
         $licenses = License::where('transaction_id', $transaction_id)->get();
         // update license availability
         foreach ($licenses as $license) {
-            $license->update(['transaction_id' => null, 'status' => 1]);
+            $license->update(['transaction_id' => 0, 'status' => 1]);
         }
         // delete transaction
         Transaction::find($transaction_id)->delete();

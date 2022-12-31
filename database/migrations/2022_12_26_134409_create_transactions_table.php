@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('cart_id');
-            $table->foreignId('transaction_id');
+            // $table->foreignId('transaction_id');
             $table->date('paid_date')->nullable();
             $table->tinyInteger('status');
             $table->integer('total');
