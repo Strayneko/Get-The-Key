@@ -61,7 +61,7 @@ class HomeController extends Controller
     {
         $product = Product::find($id);
         $license = License::where('product_id', $product->id)->where('status', '>', 0)->get();
-        $cart = Cart::where('user_id', Auth::user()->id)->first();
+        // $cart = Cart::where('user_id', Auth::user()->id)->first();
         return view('home.product_detail', ['product' => $product, 'license' => $license]);
     }
     public function save_transaction($transaction_id)

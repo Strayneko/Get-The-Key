@@ -40,7 +40,7 @@
                     <div class="text-xs text-gray-500 ml-3">({{ count($product->license->where('status', '>', 0)) <= 0 ? 'Habis' : number_format(count($product->license->where('status', '>', 0))) }})</div>
                 </div>
             </div>
-            <button @if(count($product->license->where('status', '>', 0)) <= 0) disabled @endif wire:click.prevent="addToCart({{ $product->id }})" wire:loading.attr="disabled"
+            <button @if(Auth::guest()) disabled @endif  @if(count($product->license->where('status', '>', 0)) <= 0 || Auth::guest())  disabled @endif wire:click.prevent="addToCart({{ $product->id }})" wire:loading.attr="disabled"
                 class="block w-full disabled:cursor-not-allowed py-1 text-center text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary disabled:grayscale transition">Add
                 to cart</button>
         </div>
