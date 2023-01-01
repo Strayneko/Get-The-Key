@@ -11,7 +11,7 @@ class Detail extends Component
 {
     public $transaction;
     public $licenses;
-    public $product;
+    public $products;
 
     public function mount()
     {
@@ -22,7 +22,11 @@ class Detail extends Component
         if ($this->transaction->first()->status != 2) abort(403);
 
         $this->licenses = License::where('transaction_id', $this->transaction->first()->id)->get();
-        $this->product = Product::find($this->licenses->first()->product_id);
+        $license_ids = [];
+        foreach ($this->licenses as $license) {
+            array_push($license_ids, $license->product_id);
+        }
+        $this->products = Product::whereIn('id', $license_ids)->get();
     }
     public function render()
     {

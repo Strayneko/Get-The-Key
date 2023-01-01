@@ -1,5 +1,6 @@
 <div>
-
+    
+    @foreach($products as $product)
     <div class="bg-gray-300 p-6  md:mx-auto">
         <div class="bg-white p-6  md:mx-auto w-1/3">
             <div class="text-center">
@@ -8,7 +9,7 @@
                 <p class="text-gray-600 my-2">License Term = {{ $product->licensing_term }} Days</p>
                 <p class="text-gray-600 my-2">Max User = {{ $product->max_user }} Users</p>
                 <h2 class="text-slate-800 font-semibold text-xl mb-3">License Keys: </h2>
-                @foreach($licenses as $license)
+                @foreach($licenses->where('product_id', $product->id) as $license)
                 <p>{{ $license->license_key }}</p>
                 @endforeach
                 <div class="py-10 text-center">
@@ -22,6 +23,7 @@
             </div>
         </div>
     </div>
+    @endforeach
 
 
 </div>

@@ -44,7 +44,7 @@
             <p class="text-gray-600 my-2">Thank you. Please wait until verification done.</p>
             <p> Have a great day! </p>
             <div class="py-10 text-center">
-                <a href="" class="px-12 bg-darkerPrimary hover:bg-darkerPrimary text-white font-semibold py-3">
+                <a href="{{ route('home.transaction_list') }}" class="px-12 bg-darkerPrimary hover:bg-darkerPrimary text-white font-semibold py-3">
                     GO BACK
                 </a>
             </div>
@@ -102,8 +102,8 @@
             
                 <div class="border-t pt-3">
                     <h1 class="text-lg text-center mt-4 text-gray-600 font-semibold mb-5">Payment amount: Rp{{ number_format($transaction->total) }}</h1>
-                    <button
-                        class="block w-full max-w-xs mx-auto bg-darkerPrimary hover:bg-darkerPrimary/80 focus:bg-darkerPrimary/80 text-white rounded-lg px-3 py-3 font-semibold"><i
+                    <button wire:target="receipt_image" wire:loading.attr="disabled"
+                        class="block w-full max-w-xs disabled:grayscale disabled:cursor-not-allowed mx-auto bg-darkerPrimary hover:bg-darkerPrimary/80 focus:bg-darkerPrimary/80 text-white rounded-lg px-3 py-3 font-semibold"><i
                             class="mdi mdi-lock-outline mr-1"></i> PAY NOW</button>
                 </div>
             </form>

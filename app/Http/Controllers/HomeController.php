@@ -68,8 +68,12 @@ class HomeController extends Controller
     {
         $transaction = Transaction::where('user_id', Auth::user()->id)->where('id', $transaction_id)->get();
         $licenses = License::where('transaction_id', $transaction->first()->id)->get();
-        $product = Product::find($licenses->first()->product_id);
-        $pdf = Pdf::loadView('home.transaction_detail_download', ['transaction' => $transaction, 'product' => $product, 'licenses' => $licenses])->setOptions(['defaultFont' => 'sans-serif']);
+        $license_ids = [];
+        foreach ($licenses as $license) {
+            array_push($license_ids, $license->product_id);
+        }
+        $products = Product::whereIn('id', $license_ids)->get();
+        $pdf = Pdf::loadView('home.transaction_detail_download', ['transaction' => $transaction, 'products' => $products, 'licenses' => $licenses])->setOptions(['defaultFont' => 'sans-serif']);
         return $pdf->download(uniqid('transaction_', true) . '.pdf');
         // return view('home.transaction_detail_download', ['transaction' => $transaction]);
     }
