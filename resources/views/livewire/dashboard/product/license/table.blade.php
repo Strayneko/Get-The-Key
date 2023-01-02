@@ -22,7 +22,7 @@
                 <td class=" py-3 px-4">{{ $license->license_key }}</td>
                 <td class=" py-3 px-4">{!! $license->status == 0 ? "<span class='text-red-500'>Sold</span>" : "<span class='text-green-500'>Available</span>" !!}</td>
                 <td class=" py-3 px-4">
-                    <a href="" wire:click.prevent="deleteLicense({{ $license->id }})"
+                    <a href="" @click.prevent="if(confirm('Are you sure?')) $wire.deleteLicense({{ $license->id }})" 
                         class="text-white bg-red-500 inline-block py-1 px-2 rounded hover:bg-red-700 focus:bg-red-700 hover:-translate-y-1 transition-transform hover:shadow-lg"
                         wire:loading.attr="disabled">Delete</a>
                 @if($license->status > 0)

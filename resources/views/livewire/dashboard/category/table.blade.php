@@ -22,7 +22,7 @@
                 <td class="w-10 h-10  py-3 px-4"><img src="{{ asset('storage/' . $category->image) }}" alt=""></td>
                 <td class="w-1/3  py-3 px-4">{{ $category->name }}</td>
                 <td class=" py-3 px-4 text-center">
-                    <a href="" wire:click.prevent="deleteCategory({{ $category->id }})"
+                    <a href="" @click.prevent="if(confirm('Are you sure?')) $wire.deleteCategory({{ $category->id }})"
                         class="text-white bg-red-500 inline-block py-1 px-2 rounded hover:bg-red-700 focus:bg-red-700 hover:-translate-y-1 transition-transform hover:shadow-lg disabled:grayscale disabled:cursor-not-allowed"
                         wire:loading.attr="disabled">Delete</a>
                     <a href="{{ route('dashboard.category.edit', ['category_id' => $category->id]) }}"
