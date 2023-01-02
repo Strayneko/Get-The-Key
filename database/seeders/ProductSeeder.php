@@ -21,7 +21,7 @@ class ProductSeeder extends Seeder
             'name' => 'Microsoft Excel',
             'price' => 300000,
             'description' => 'aplikasi keren untuk kerja',
-            'image' => 'image/product/excel.jpg',
+            'image' => 'sample/excel.png',
             'licensing_term' => 30,
             'manufacture' => 'Microsoft',
             'max_user' => 5

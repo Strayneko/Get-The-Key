@@ -20,7 +20,7 @@ class ShopSeeder extends Seeder
             'user_id' => 2,
             'name' => 'Toko Luar Biasa',
             'description' => 'Sebuah toko yang luar biasa sekali. Ayo beli product luar biasa kami',
-            'picture' => 'pictures/shop/toko_fulan.jpg',
+            'picture' => 'sample/shop.jpg',
             'address' => 'Sebuah alamat'
         ]);
     }

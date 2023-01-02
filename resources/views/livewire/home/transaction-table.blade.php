@@ -39,7 +39,7 @@
             <td class=" py-3 px-4">{{ $transaction->paid_date ?? 'Unpaid' }}</td>
             <td class=" py-3 px-4">
                 @if($transaction->status != 2)
-                <a href="" wire:click.prevent="cancelTransaction({{ $transaction->id }})"
+                <a href="" @click.prevent="if(confirm('Are you sure?')) $wire.cancelTransaction({{ $transaction->id }})" 
                     class="text-white bg-red-500 inline-block py-1 px-2 rounded hover:bg-red-700 focus:bg-red-700 hover:-translate-y-1 transition-transform hover:shadow-lg"
                     wire:loading.attr="disabled">Cancel</a>
                 @endif
