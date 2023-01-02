@@ -26,7 +26,7 @@
                 <td class=" py-3 px-4">{{ number_format($product->price) }}</td>
                 <td class=" py-3 px-4">{{ number_format(count($product->license->where('status', '>', 0))) }}</td>
                 <td class=" py-3 px-4">
-                    <a href="" wire:click.prevent="deleteProduct({{ $product->id }})"
+                    <a href=""  wire:click.prevent="deleteProduct({{ $product->id }})"
                         class="text-white bg-red-500 inline-block py-1 px-2 rounded hover:bg-red-700 focus:bg-red-700 hover:-translate-y-1 transition-transform hover:shadow-lg" wire:loading.attr="disabled">Delete</a>
                     <a href="{{ route('dashboard.product.license', ['product_id' => $product->id]) }}"
                         class="text-white bg-green-500 inline-block py-1 px-2 rounded hover:bg-green-600 focus:bg-green-600 hover:-translate-y-1 transition-transform hover:shadow-lg">License List</a>
