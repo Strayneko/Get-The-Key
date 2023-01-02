@@ -19,7 +19,7 @@ class LicenseSeeder extends Seeder
             'product_id' => 1,
             'transaction_id' => 0,
             'license_key' => 'NAKB-IKAN-KERE-NSIH',
-            'status' => 1
+            'status' => 0
         ]);
     }
 }
