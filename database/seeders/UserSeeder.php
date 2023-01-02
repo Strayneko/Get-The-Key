@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
                     'birth_date'   => '06-06-2002',
                     'gender'       => 1,
                     'address'      => 'pemalang',
-                    'picture'      => 'tes.jpg',
+                    'picture'      => 'pictures/user/admin.jpg',
                     'role_id'     => 3,
                 ],
                 [
@@ -37,8 +37,8 @@ class UserSeeder extends Seeder
                     'birth_date'   => '06-06-2002',
                     'gender'       => 1,
                     'address'      => 'pemalang',
-                    'picture'      => 'tes.jpg',
-                    'role_id'     => 1
+                    'picture'      => 'pictures/user/fulan.jpg',
+                    'role_id'     => 2
                 ],
             ]
         );

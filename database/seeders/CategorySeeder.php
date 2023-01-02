@@ -19,12 +19,20 @@ class CategorySeeder extends Seeder
             [
                 [
                     'name' => 'Office',
-                    'image' => 'tes.jpg'
+                    'image' => 'images/category/office.jpg'
                 ],
                 [
                     'name' => 'Video Editing',
-                    'image' => 'tes.jpg'
-                ]
+                    'image' => 'images/category/video_editing.jpg'
+                ],
+                [
+                    'name' => 'Operating System',
+                    'image' => 'images/category/os.jpg'
+                ],
+                [
+                    'name' => 'Design Graphics',
+                    'image' => 'images/category/design_graphics.jpg'
+                ],
             ]
         );
     }
