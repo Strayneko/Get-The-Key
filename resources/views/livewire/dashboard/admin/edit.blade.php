@@ -26,7 +26,7 @@
 
         <div class="bg-white overflow-auto w-1/2">
             <div class="leading-loose">
-               <form  class="p-10"  wire:submit.prevent="submit">
+               <form  class="p-10"  wire:submit.prevent="update">
                    
                     <div class="space-y-2">
                         <div>
@@ -88,7 +88,7 @@
                 
                     <div class="mt-4">
                         <button type="submit" wire:loading.attr="disabled" wire:target="picture"
-                            class="block w-full py-2 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary disabled:cursor-not-allowed disabled:grayscale transition uppercase font-roboto font-medium">add admin</button>
+                            class="block w-full py-2 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary disabled:cursor-not-allowed disabled:grayscale transition uppercase font-roboto font-medium">edit admin</button>
                     </div>
                 </form>
             </div>
