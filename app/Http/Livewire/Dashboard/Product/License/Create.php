@@ -21,6 +21,7 @@ class Create extends Component
 
     public function submit()
     {
+        $this->rules['license_key'] .= '|unique:licenses';
         // validate user input
         $this->validate();
         $payload = [
@@ -34,6 +35,7 @@ class Create extends Component
 
     public function update()
     {
+        if ($this->license_key != $this->license->license_key) $this->rules['license_key'] .= '|unique:licenses';
         $this->validate();
         $this->license->update(['license_key' => $this->license_key]);
         return redirect()->route('dashboard.product.license', ['product_id' => $this->product_id])->with('success', 'License key has been updated!');
