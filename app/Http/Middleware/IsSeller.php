@@ -17,7 +17,7 @@ class IsSeller
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->id != 2) return redirect()->route('home.index');
+        if (Auth::user()->role_id != 2) return redirect()->route('home.index');
         return $next($request);
     }
 }
